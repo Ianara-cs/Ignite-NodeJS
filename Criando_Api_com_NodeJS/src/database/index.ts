@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { DataSource } from "typeorm";
 
 
@@ -8,15 +9,15 @@ const AppDataSource = new DataSource({
     username: "postgres",
     password: "nara",
     database: "ignite_node",
-    synchronize: true,
-    migrations: ["./src/database/migrations/*.ts"],
+    synchronize: false,
+    logging: false,
+    migrations: ["./src/**/migrations/*.ts"],
     entities: ["./src/modules/**/entities/*.ts"],
+    subscribers: [],
 })
 
-AppDataSource.initialize()
-    .then(() => {
-        console.log("Data Source has been initialized!")
-    })
-    .catch((err) => {
-        console.error("Error during Data Source initialization", err)
-    })
+export function createConnection(host = "database"): Promise<DataSource> {
+    return AppDataSource.setOptions({ host }).initialize();
+  }
+  
+export default AppDataSource
