@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
+import { Category } from "../modules/cars/entities/Category";
 
 
 const AppDataSource = new DataSource({
@@ -10,14 +11,13 @@ const AppDataSource = new DataSource({
     password: "nara",
     database: "ignite_node",
     synchronize: false,
-    logging: false,
+    logging: true,
+    entities: [Category],
     migrations: ["./src/**/migrations/*.ts"],
-    entities: ["./src/modules/**/entities/*.ts"],
-    subscribers: [],
 })
 
 export function createConnection(host = "database"): Promise<DataSource> {
     return AppDataSource.setOptions({ host }).initialize();
-  }
+}
   
 export default AppDataSource

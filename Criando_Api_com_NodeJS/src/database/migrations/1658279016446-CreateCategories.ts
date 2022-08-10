@@ -27,7 +27,6 @@ export class CreateCategories1658279016446 implements MigrationInterface {
                     }
                 ],
             }),
-            true,
         )
     }
 
