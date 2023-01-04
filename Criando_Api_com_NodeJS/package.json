@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "migration:create": "typeorm migration:create ",
-    "migration:run": "typeorm-ts-node-esm -d ./src/database/data-source.ts migration:run",
+    "migration:run": "typeorm-ts-node-esm -d ./src/shared/infra/typeorm/data-source.ts migration:run",
     "test": "jest"
   },
   "dependencies": {
