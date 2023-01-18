@@ -7,6 +7,7 @@
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "migration:create": "typeorm migration:create ",
     "migration:run": "typeorm-ts-node-esm -d ./src/shared/infra/typeorm/data-source.ts migration:run",
+    "migration:revert": "typeorm-ts-node-esm -d ./src/shared/infra/typeorm/data-source.ts migration:revert",
     "test": "jest",
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
