@@ -4,7 +4,7 @@ import { createConnection } from "../data-source";
 
 
 async function create() { 
-    const connection = await createConnection("localhost")
+    const connection = await createConnection()
 
     const id = uuidV4()
     const password = hashSync("admin", 8)

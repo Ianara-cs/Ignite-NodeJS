@@ -1,5 +1,5 @@
 import { Repository } from "typeorm";
-import { AppDataSource } from "../../../../../shared/infra/typeorm/data-source";
+import { appDataSource } from "../../../../../shared/infra/typeorm/data-source";
 import { ICreateRentalDTO } from "../../../dtos/ICreateRentalDTO";
 import { IRentalsRepository } from "../../../repositories/IRentalsRepository";
 import { Rental } from "../entities/Rental";
@@ -8,7 +8,7 @@ class RentalsRepository implements IRentalsRepository {
     private repository: Repository<Rental>
 
     constructor() {
-        this.repository = AppDataSource.getRepository(Rental)
+        this.repository = appDataSource.getRepository(Rental)
     }
 
     async findOpenRentalByCar(car_id: string): Promise<Rental> {

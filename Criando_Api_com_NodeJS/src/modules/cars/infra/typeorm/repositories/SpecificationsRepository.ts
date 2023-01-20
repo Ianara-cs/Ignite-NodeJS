@@ -1,5 +1,5 @@
 import { In, Repository } from "typeorm";
-import { AppDataSource } from "../../../../../shared/infra/typeorm/data-source";
+import { appDataSource } from "../../../../../shared/infra/typeorm/data-source";
 import { ICreateSpecificationDTO, ISpecificationsRepository } from "../../../repositories/ISpecificationsRepository";
 import { Specification } from "../entities/Specification";
 
@@ -7,7 +7,7 @@ class SpecificationsRepository implements ISpecificationsRepository {
     private repository: Repository<Specification>
 
     constructor() {
-        this.repository = AppDataSource.getRepository(Specification)
+        this.repository = appDataSource.getRepository(Specification)
     }
 
     async create({ description, name }: ICreateSpecificationDTO): Promise<Specification> {
