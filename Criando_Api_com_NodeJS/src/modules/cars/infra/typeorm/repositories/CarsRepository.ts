@@ -39,7 +39,7 @@ class CarsRepository implements ICarsRepository {
         return car
     }
     
-    async findByLincensePlate(license_plate: string): Promise<Car> {
+    async findByLicensePlate(license_plate: string): Promise<Car> {
         const car = await this.repository.findOne({
             where: {license_plate}
         })
@@ -73,6 +73,16 @@ class CarsRepository implements ICarsRepository {
         const car = await this.repository.findOne({where: {id}})
 
         return car
+    }
+
+    async updateAvailable(id: string, available: boolean): Promise<void> {
+        await this.repository
+        .createQueryBuilder()
+        .update()
+        .set({available})
+        .where("id = :id")
+        .setParameters({id})
+        .execute()
     }
 
 }

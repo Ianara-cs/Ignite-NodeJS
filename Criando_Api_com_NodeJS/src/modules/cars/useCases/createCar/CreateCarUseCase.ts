@@ -22,7 +22,7 @@ class CreateCarUseCase {
     ) {}
 
     async execute({name, description, daily_rate, license_plate, fine_amount, brand, category_id}: IRequest): Promise<Car> {
-        const carAlreadyExists = await this.carsRepository.findByLincensePlate(
+        const carAlreadyExists = await this.carsRepository.findByLicensePlate(
             license_plate
         )
 
