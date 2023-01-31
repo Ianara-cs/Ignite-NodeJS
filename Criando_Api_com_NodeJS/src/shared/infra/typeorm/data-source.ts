@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import "reflect-metadata";
 import { DataSource, DataSourceOptions } from "typeorm";
 import { User } from "../../../modules/accounts/infra/typeorm/entities/User";
+import { UserTokens } from '../../../modules/accounts/infra/typeorm/entities/UserTokens';
 import { Car } from "../../../modules/cars/infra/typeorm/entities/Car";
 import { Category } from "../../../modules/cars/infra/typeorm/entities/Category";
 import { Specification } from "../../../modules/cars/infra/typeorm/entities/Specification";
@@ -17,7 +18,7 @@ const localOrmConfig: DataSourceOptions = {
     database: process.env.POSTGRES_DB,
     synchronize: false,
     logging: false,
-    entities: [Category, Specification, User, Car, Rental],
+    entities: [Category, Specification, User, Car, Rental, UserTokens],
     migrations: [`${__dirname}/**/**/migrations/*.{ts,js}`],
     subscribers: [],
 }
